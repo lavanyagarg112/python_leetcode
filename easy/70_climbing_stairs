@@ -1,0 +1,27 @@
+# recursion without memoization leads to time exceed error
+
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        memo = {} # memoization
+        memo[1] = 1
+        memo[2] = 2
+
+        def helper(i):
+            if i <=0:
+                return 0
+            else:
+                if i in memo:
+                    return memo[i]
+                else:
+                    memo[i] = helper(i-1) + helper(i-2) # recursion
+                    return memo[i]
+                
+
+        return helper(n)
+            
+            
+        
